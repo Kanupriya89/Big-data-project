@@ -1,0 +1,31 @@
+#MAPPER CODE
+
+import sys
+import xlrd
+import csv
+book = xlrd.open_workbook("C:\Users\Girisha\Desktop\Code\Book1.xlsx")
+ 
+sheet = book.sheets()[0]
+sheet = book.sheet_by_name("Book1")
+sheet = book.sheet_by_index(0) 
+ 
+r = sheet.row(0)
+c = sheet.col_values(0) 
+ 
+data = [] 
+for i in xrange(sheet.nrows):
+  data.append(sheet.row_values(i))
+
+num_cols = sheet.ncols
+cr = csv.reader(open("C:\Users\Girisha\Desktop\Code\Book1.csv","rb"))
+arr = range(522)
+x = 0
+for row in cr:    
+    arr[x] = row[0]
+    x += 1
+
+word2count = {}
+
+words = arr
+for word in words:
+        print '%s\t%s' % (word, 1)
